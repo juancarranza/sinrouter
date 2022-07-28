@@ -1,23 +1,20 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from 'react';
+import Home from './pages/Home';
+import About from './pages/About';
+import Contact from './pages/Contact';
 
 function App() {
+  const [currentPage, setCurrentPage] = useState("");
+  
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <button onClick={()=>{setCurrentPage("home")}}>home</button>
+      <button onClick={()=>{setCurrentPage("about")}}>about</button>
+      <button onClick={()=>{setCurrentPage("contact")}}>contact</button>            
+    
+      {currentPage === "home" && <Home />}
+      {currentPage === "about" && <About />}
+      {currentPage === "contact" && <Contact />}
     </div>
   );
 }
